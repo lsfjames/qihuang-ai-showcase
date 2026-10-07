@@ -1,0 +1,37 @@
+name: 项目展示反馈
+description: 对项目功能、文化表达或体验流程提出具体建议
+title: "[反馈] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        这里是项目展示仓库。请依据展示内容或实际体验反馈，不提交姓名、联系方式、病历、密码或 API 密钥。
+  - type: dropdown
+    id: area
+    attributes:
+      label: 反馈涉及什么
+      options:
+        - 内容生成与人工审校
+        - 前后复述与理解体验
+        - 文化表达或英文解释
+        - 展示与使用说明
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: observation
+    attributes:
+      label: 具体观察与建议
+      description: 请描述你看到的内容、遇到的问题，以及希望怎样改进。
+    validations:
+      required: true
+  - type: dropdown
+    id: context
+    attributes:
+      label: 反馈依据
+      options:
+        - 阅读了项目介绍和界面截图
+        - 参加过团队组织的网站体验
+        - 其他
+    validations:
+      required: true
