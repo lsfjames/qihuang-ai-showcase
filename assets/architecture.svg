@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="890" viewBox="0 0 1440 890" role="img" aria-labelledby="title desc">
+<title id="title">岐黄向海公开版系统架构</title>
+<desc id="desc">浏览器通过HTTP API连接Express。登录与资源授权后进入内容工作台和理解体验。模型适配器调用Ollama的v1兼容接口，服务端保存版本与审核到单进程JSON文件。隔离演示为前后端指定同一会话。核心源码保持私有。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#396b60"/></marker>
+  <style>
+    text{font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#193e37}
+    .title{font-size:30px;font-weight:700}.subtitle{font-size:18px;fill:#55766e}.head{font-size:22px;font-weight:700}.body{font-size:18px}.small{font-size:16px;fill:#55766e}.line{fill:none;stroke:#396b60;stroke-width:2.5;marker-end:url(#arrow)}.panel{fill:#fff;stroke:#b5cfc5;stroke-width:1.5}.box{fill:#edf5ef;stroke:#8fb6a4;stroke-width:1.5}.note{fill:#fff6e7;stroke:#dec496;stroke-width:1.5}
+  </style>
+</defs>
+<rect width="1440" height="890" fill="#f7f6ef" rx="22"/>
+<text class="title" x="52" y="65">岐黄向海 · AI 内容协作与理解体验</text>
+<text class="subtitle" x="52" y="98">公开组件说明 · 依据 2026-10-17 实现整理 · 核心源码与运行数据保持私有</text>
+
+<rect class="panel" x="48" y="140" width="294" height="540" rx="18"/>
+<text class="head" x="74" y="181">浏览器</text>
+<text class="small" x="74" y="209">React 18 · TypeScript · Vite 6</text>
+<rect class="box" x="72" y="239" width="246" height="108" rx="12"/>
+<text class="head" x="92" y="275">创作与审核工作台</text>
+<text class="body" x="92" y="308">修订 / 版本 / 分角色审核</text>
+<rect class="box" x="72" y="372" width="246" height="108" rx="12"/>
+<text class="head" x="92" y="409">学习者理解体验</text>
+<text class="body" x="92" y="442">同意 / 前后复述 / 撤回</text>
+<text class="small" x="75" y="538">密钥只留在服务端</text>
+<text class="small" x="75" y="566">开发环境使用同源代理</text>
+<text class="small" x="75" y="594">角色账号 ≠ 专家资质</text>
+
+<rect class="panel" x="423" y="140" width="590" height="540" rx="18"/>
+<text class="head" x="449" y="181">Express HTTP 服务</text>
+<text class="small" x="449" y="209">Node.js · JWT · 资源所有权与字段白名单</text>
+<rect class="box" x="449" y="239" width="538" height="72" rx="12"/>
+<text class="head" x="469" y="269">认证 / 角色 / 所有权</text>
+<text class="small" x="469" y="295">普通创作者不能跨用户修改私有资源</text>
+<rect class="box" x="449" y="347" width="249" height="146" rx="12"/>
+<text class="head" x="468" y="380">内容工作流</text>
+<text class="body" x="468" y="412">七字段校验 / 版本检查</text>
+<text class="body" x="468" y="443">同版两关审核后发布</text>
+<text class="small" x="468" y="474">业务变更与审计同事务提交</text>
+<rect class="box" x="731" y="347" width="256" height="146" rx="12"/>
+<text class="head" x="750" y="380">AI 适配器</text>
+<text class="body" x="750" y="412">Chat Completions</text>
+<text class="body" x="750" y="443">超时 / 错误 / 字段校验</text>
+<text class="small" x="750" y="474">提示词版本 / 上游 usage</text>
+<rect class="box" x="449" y="533" width="538" height="110" rx="12"/>
+<text class="head" x="469" y="570">理解体验与其他既有业务接口</text>
+<text class="body" x="469" y="601">固定材料版本、会话记录、人工评阅入口</text>
+<text class="small" x="469" y="628">旧内容模块独立三关流程，不等同工作台状态机</text>
+
+<rect class="panel" x="1091" y="140" width="301" height="256" rx="18"/>
+<text class="head" x="1116" y="181">模型服务</text>
+<text class="body" x="1116" y="223">Ollama 本机 /v1</text>
+<text class="small" x="1116" y="260">既有记录：Qwen2.5:1.5B</text>
+<text class="small" x="1116" y="291">或按配置接兼容服务</text>
+<text class="small" x="1116" y="333">没有检索工具 / RAG</text>
+<text class="small" x="1116" y="362">生成结果仍需人工审校</text>
+<rect class="panel" x="1091" y="432" width="301" height="248" rx="18"/>
+<text class="head" x="1116" y="473">持久化</text>
+<text class="body" x="1116" y="513">单进程 JSON 文件</text>
+<text class="small" x="1116" y="550">内容 / 版本 / 审核 / 会话</text>
+<text class="small" x="1116" y="583">运行数据不进入展示仓库</text>
+<text class="small" x="1116" y="625">尚无多实例写入方案</text>
+
+<path class="line" d="M342 275 H423"/>
+<text class="small" x="351" y="253">/api</text>
+<path class="line" d="M718 311 V329 H573 V347"/>
+<path class="line" d="M698 420 H731"/>
+<path class="line" d="M987 420 H1053 V252 H1091"/>
+<path class="line" d="M987 588 H1091"/>
+<rect class="note" x="48" y="720" width="1344" height="122" rx="16"/>
+<text class="head" x="73" y="757">隔离演示边界</text>
+<text class="body" x="73" y="788">新建 run-UUID 会话 · 前后端共用 manifest · 路径与联接校验 · 只管理自己的子进程</text>
+<text class="small" x="73" y="819">48 项程序测试不代表专家审校；未验证受众效果，本页不报告人数与传播指标。</text>
+</svg>
