@@ -1,0 +1,109 @@
+# 公开展示仓库忽略规则
+# 仅允许提交已获确认公开的材料；其余一律拒绝进入版本库。
+
+# ---- 凭据与密钥：任何情况下都不得入库 ----
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+*.p12
+*.crt
+id_rsa
+id_ed25519
+credentials.json
+secrets.*
+
+# ---- 浏览器缓存、Cookie 与运行配置（含可能含登录态的 profile）----
+.runtime/
+.runtime-*/
+.runtime-preview-*/
+**/profile/
+**/Cookies
+**/Login Data
+**/Web Data
+**/Local Storage/
+**/Session Storage/
+**/IndexedDB/
+**/Service Worker/
+
+# ---- 依赖与构建产物 ----
+node_modules/
+dist/
+dist-single/
+build/
+.vite/
+*.tsbuildinfo
+
+# ---- 数据库、业务数据与用户上传 ----
+data/
+server/data/
+*.db
+*.sqlite
+*.sqlite3
+uploads/
+materials/
+*.csv
+*.xlsx
+*.xls
+
+# ---- 日志与临时文件 ----
+*.log
+logs/
+tmp/
+temp/
+.cache/
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# ---- 模型权重与训练产物 ----
+*.safetensors
+*.gguf
+*.ggml
+*.bin
+*.pt
+*.pth
+*.onnx
+*.ckpt
+adapters/
+
+# ---- 评测原始数据（含参与者内容，不公开）----
+evaluation/raw/
+evaluation/results/
+*.jsonl
+!docs/evaluation/*.jsonl
+
+# ---- 未获批准公开的项目截图 ----
+# 本次已确认公开：assets/architecture.svg、assets/01-理解体验页.png
+# 其余素材一律排除，不得因 git add -A 被带入
+assets/learning-preview.png
+assets/02-*.png
+assets/03-*.png
+assets/04-*.png
+assets/05-*.png
+assets/06-*.png
+assets/07-*.png
+assets/08-*.png
+assets/09-*.png
+assets/*-preview.png
+
+# ---- 明确允许保留的已批准公开材料（防止被上面的通配误伤）----
+!README.md
+!README.en.md
+!assets/architecture.svg
+!assets/01-理解体验页.png
+!.github/
+!.github/ISSUE_TEMPLATE/
+!.github/ISSUE_TEMPLATE/feedback.yml
+
+# ---- 私有工程源码：公开展示仓库绝不允许包含 ----
+src/
+server/
+scripts/
+package.json
+package-lock.json
+vite.config.ts
+tsconfig.json
